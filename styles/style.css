@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Goldman:wght@400;700&family=Iceland&display=swap');
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary-color: #A1B5D8;
+  --secondary-color: #738290;
+  --card-color: #FFFCF7;
+  --hover-color: #ffd700;
+}
+
+body {
+  background: linear-gradient(90deg, #d5e3bd 0%, #aac5a0 100%);
+  font-family: 'Iceland', sans-serif;
+}
+
+h1 {
+  font-family: 'Goldman', sans-serif;
+}
+
+nav {
+  background-color: var(--primary-color);
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+  letter-spacing: 1px;
+  padding: 10px 15px;
+}
+
+nav ul {
+  display: flex;
+  gap: 10px;
+  list-style-type: none;
+  font-size: larger;
+}
+
+
+nav li a {
+  display: block;
+  color: black;
+  text-align: center;
+  padding: 14px 20px;
+  text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+nav li a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--hover-color);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease;
+}
+
+nav li a:hover::after {
+  transform: scaleX(1);
+}
+
