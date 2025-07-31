@@ -3,19 +3,24 @@
 
 * {
   margin: 0;
-  padding: 0;
+
   box-sizing: border-box;
+}
+
+main {
+  margin-top: 30px;
+  padding: 15px;
 }
 
 :root {
   --primary-color: #A1B5D8;
-  --secondary-color: #738290;
+  --secondary-color: #394d60;
   --card-color: #FFFCF7;
   --hover-color: #ffd700;
 }
 
 body {
-  background: linear-gradient(90deg, #d5e3bd 0%, #aac5a0 100%);
+  background: linear-gradient(90deg, #f3f5db 0%, #bbc5a0 100%);
   font-family: 'Iceland', sans-serif;
 }
 
@@ -24,7 +29,7 @@ h1 {
 }
 
 nav {
-  background-color: var(--primary-color);
+  background-color: var(--card-color);
   box-shadow: 0 2px 5px rgba(0,0,0,0.15);
   letter-spacing: 1px;
   padding: 10px 15px;
@@ -65,3 +70,107 @@ nav li a:hover::after {
   transform: scaleX(1);
 }
 
+.card {
+  background: url('/images/background-hero.webp') no-repeat center center;
+  background-size: cover;
+  border: 7px solid #f1c40f;
+  border-radius: 12px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  padding: 16px;
+  width: 350px;
+  margin: 20px auto;
+  color: #212f3d;
+  font-family: 'Iceland', sans-serif;
+  position: relative;
+}
+
+.card img {
+  top: 20px;
+  left: 50%;
+  position: inherit;
+  transform: translateX(-50%);
+}
+
+.pokemon-info {
+  background: var(--card-color);
+  border-radius: 10px;
+  padding: 10px;
+  margin-top: 20px;
+}
+
+.pokemon-info p {
+  font-size: 0.95em;
+  margin: 4px 0;
+  text-align: center;
+}
+
+.pokemon-info h3 {
+  font-size: 1.5em;
+  margin: 0;
+  text-align: center;
+  color: #2c3e50;
+}
+
+
+
+.pokemon-info input[type="button"] {
+  background-color: #f1c40f;
+  border: none;
+  border-radius: 5px;
+  color: black;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 10px;
+  margin: 10px 100px;
+  align-items: center;
+
+}
+
+.search {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.search input[type="text"] {
+  width: 300px;
+  padding: 10px;
+  border: 2px solid var(--secondary-color);
+  border-radius: 5px;
+  font-size: 1em;
+  text-align: center;
+}
+.search input[type="text"]:focus {
+  border-color: var(--hover-color);
+  outline: none;
+}
+
+.search button {
+  background-color: #394d60;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 1em;
+  padding: 10px 20px;
+  margin: 20px 0 0 10px;
+  box-shadow: -2px 3px 0 #000000, -4px 6px 0 #212f3d;
+}
+
+.search button:active {
+  box-shadow: inset -2px 3px 0 #000000, inset -4px 6px 0 #212f3d;
+}
+
+form{
+  text-align: center;
+}
+
+footer {
+  background-color: var(--secondary-color);
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
