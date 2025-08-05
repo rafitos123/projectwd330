@@ -28,6 +28,7 @@ const fetchPokemon = async (pokemon) => {
         pokemonId.textContent = '';
         pokemonType.textContent = '';
         pokemonImg.src = 'images/loadingpoke.gif';
+        return null;
     }
     
 }
@@ -97,17 +98,25 @@ const renderPokemon = async (pokemon) => {
 
 // Event Listeners for navigation buttons
 
-nextButton.addEventListener('click', () => {
-    currentPokemonId++;
-    renderPokemon(currentPokemonId);
-});
-
-backButton.addEventListener('click', () => {
-    if (currentPokemonId > 1) {
-        currentPokemonId--;
-        renderPokemon(currentPokemonId);
+nextButton.addEventListener('click', async () => {
+    const nextId = currentPokemonId + 1;
+    const data = await fetchPokemon(nextId);
+    if (data) {
+        renderPokemon(nextId);
     }
 });
+
+
+backButton.addEventListener('click', async () => {
+    if (currentPokemonId > 1) {
+        const prevId = currentPokemonId - 1;
+        const data = await fetchPokemon(prevId);
+        if (data) {
+            renderPokemon(prevId);
+        }
+    }
+});
+
 
 
 
