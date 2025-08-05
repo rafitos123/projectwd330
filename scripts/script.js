@@ -96,6 +96,7 @@ const renderPokemon = async (pokemon) => {
 
 
 // Event Listeners for navigation buttons
+
 nextButton.addEventListener('click', () => {
     currentPokemonId++;
     renderPokemon(currentPokemonId);
