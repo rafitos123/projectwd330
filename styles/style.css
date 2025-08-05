@@ -167,7 +167,7 @@ nav li a:hover::after {
   display: grid;
   grid-template-columns: auto;
   gap: 30px;
-  margin: 30px auto;
+  margin: 30px auto 30px;
   max-width: 1200px;
   padding: 0 15px;
 
