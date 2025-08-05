@@ -165,11 +165,17 @@ nav li a:hover::after {
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-columns: auto;
   gap: 30px;
   margin: 30px auto;
   max-width: 1200px;
   padding: 0 15px;
+
+  @media screen and (min-width: 600px) {
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    
+  }
+
 }
 
  #load-more {
