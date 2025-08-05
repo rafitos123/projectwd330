@@ -27,7 +27,7 @@ const fetchPokemon = async (pokemon) => {
         pokemonName.textContent = 'Pokémon not found';
         pokemonId.textContent = '';
         pokemonType.textContent = '';
-        pokemonImg.src = '../images/loadingpoke.gif';
+        pokemonImg.src = 'images/loadingpoke.gif';
     }
     
 }
