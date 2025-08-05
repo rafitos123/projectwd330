@@ -3,7 +3,7 @@
 
 * {
   margin: 0;
-
+  
   box-sizing: border-box;
 }
 
@@ -22,6 +22,7 @@ main {
 body {
   background: linear-gradient(90deg, #f3f5db 0%, #bbc5a0 100%);
   font-family: 'Iceland', sans-serif;
+  height: 100%;
 }
 
 h1 {
@@ -161,6 +162,32 @@ nav li a:hover::after {
 .search button:active {
   box-shadow: inset -2px 3px 0 #000000, inset -4px 6px 0 #212f3d;
 }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin: 30px auto;
+  max-width: 1200px;
+  padding: 0 15px;
+}
+
+ #load-more {
+  background-color: var(--secondary-color);
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 1.2em;
+  padding: 10px 20px;
+  margin: 20px auto;
+  display: block;
+}
+
+#load-more:hover {
+  background-color: var(--hover-color);
+}
+
 
 form{
   text-align: center;
