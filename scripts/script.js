@@ -197,3 +197,57 @@ loadMoreButton.addEventListener('click', loadPokemonBatch);
 
 loadPokemonBatch();
 renderPokemon(currentPokemonId);
+
+
+//chatbox
+const chatButton = document.getElementById("chatButton");
+const chatBox = document.getElementById("chatBox");
+const closeChat = document.getElementById("closeChat");
+const sendBtn = document.getElementById("sendBtn");
+const userInput = document.getElementById("userInput");
+const chatBody = document.getElementById("chatBody");
+
+
+// Mostrar/ocultar chat
+chatButton.onclick = () => chatBox.classList.add("show");
+closeChat.onclick = () => chatBox.classList.remove("show");
+
+// Função para adicionar mensagens ao chat
+function addMessage(text, sender) {
+  const msg = document.createElement("div");
+  msg.className = `chat-message ${sender}-message`;
+  msg.textContent = text;
+  chatBody.appendChild(msg);
+  chatBody.scrollTop = chatBody.scrollHeight;
+}
+
+// Enviar mensagem
+sendBtn.onclick = async () => {
+  const message = userInput.value.trim();
+  if (!message) return;
+
+  addMessage(message, "user");
+  userInput.value = "";
+
+  try {
+ const response = await fetch(
+  "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=AIzaSyAWjv1iN3Clrfj58o2JJ1SdQIpo7L5M7XY",
+  {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      contents: [{ parts: [{ text: "Olá, IA!" }] }]
+    })
+  }
+);
+
+
+    const data = await response.json();
+    const botReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Desculpe, não entendi.";
+    addMessage(botReply, "bot");
+  } catch (error) {
+    console.error("Erro na API:", error);
+    addMessage("Erro ao conectar com a API Gemini.", "bot");
+  }
+};
+
