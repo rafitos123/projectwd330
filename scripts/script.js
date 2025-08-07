@@ -231,7 +231,7 @@ sendBtn.onclick = async () => {
 
   try {
  const response = await fetch(
-  "https://generativelanguage.googleapis.com/v1/models/gemini-pro:generateContent?key=AIzaSyAWjv1iN3Clrfj58o2JJ1SdQIpo7L5M7XY",
+  "https://projectwd330.onrender.com",
   {
     method: "POST",
     headers: { "Content-Type": "application/json" },
