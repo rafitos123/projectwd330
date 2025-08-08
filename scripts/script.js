@@ -230,24 +230,19 @@ sendBtn.onclick = async () => {
   userInput.value = "";
 
   try {
- const response = await fetch(
-  "https://projectwd330.onrender.com",
-  {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      contents: [{ parts: [{ text: "Olá, IA!" }] }]
-    })
-  }
-);
-
+    const response = await fetch("https://projectwd330.onrender.com/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ prompt: message })
+    });
 
     const data = await response.json();
-    const botReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "Desculpe, não entendi.";
+    const botReply = data.reply || "Desculpe, não entendi.";
     addMessage(botReply, "bot");
   } catch (error) {
     console.error("Erro na API:", error);
     addMessage("Erro ao conectar com a API Gemini.", "bot");
   }
 };
+
 
