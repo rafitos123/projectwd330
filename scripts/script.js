@@ -207,7 +207,6 @@ const sendBtn = document.getElementById("sendBtn");
 const userInput = document.getElementById("userInput");
 const chatBody = document.getElementById("chatBody");
 
-
 // Mostrar/ocultar chat
 chatButton.onclick = () => chatBox.classList.add("show");
 closeChat.onclick = () => chatBox.classList.remove("show");
@@ -229,20 +228,27 @@ sendBtn.onclick = async () => {
   addMessage(message, "user");
   userInput.value = "";
 
+  addMessage("Typing...", "bot");
+
   try {
-    const response = await fetch("https://projectwd330.onrender.com/chat", {
+    const response = await fetch("http://localhost:3000/chat", {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ prompt: message })
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ message })
     });
 
     const data = await response.json();
-    const botReply = data.reply || "Desculpe, não entendi.";
-    addMessage(botReply, "bot");
+    const botReply = data.reply || "Sorry, I didn't understand";
+
+    const lastBotMsg = chatBody.querySelector(".bot-message:last-child");
+    if (lastBotMsg) lastBotMsg.textContent = botReply;
+    else addMessage(botReply, "bot");
+
   } catch (error) {
-    console.error("Erro na API:", error);
+    console.error("Erro na API Gemini:", error);
     addMessage("Erro ao conectar com a API Gemini.", "bot");
   }
 };
-
 

@@ -1,58 +1,46 @@
-import express from "express";
-import fetch from "node-fetch";
-import cors from "cors";
+const express = require('express');
+const cors = require('cors');
+const bodyParser = require('body-parser');
+const { GoogleGenerativeAI } = require('@google/generative-ai');
+const dotenv = require('dotenv');
+
+
+
 
 const app = express();
+const PORT = 3000;
+
+// 🔐 Sua chave da API Gemini
+dotenv.config();
+const API_KEY = process.env.GEMINI_API_KEY;
+
+// Inicializa a API do Gemini
+const genAI = new GoogleGenerativeAI(API_KEY);
+
+// Middlewares
 app.use(cors());
-app.use(express.json());
+app.use(bodyParser.json());
 
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY; // sua chave no Render
-
-app.post("/chat", async (req, res) => {
+// Rota principal do chatbot
+app.post('/chat', async (req, res) => {
+  const userMessage = req.body.message;
+  
   try {
-    const prompt = req.body.prompt || "";
-    
-    if (!prompt) {
-      return res.json({ reply: "Você não disse nada 😅" });
-    }
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
-    // Faz requisição à API do Gemini
-    const geminiResponse = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`,
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }]
-        })
-      }
-    );
 
-    const data = await geminiResponse.json();
+    const result = await model.generateContent(userMessage);
+    const response = result.response.text();
 
-    // Debug no console do Render
-    console.log("Resposta bruta do Gemini:", JSON.stringify(data, null, 2));
-
-    // Extrai a resposta do Gemini
-    let botReply = "Desculpe, não entendi.";
-    if (
-      data.candidates &&
-      data.candidates[0] &&
-      data.candidates[0].content &&
-      data.candidates[0].content.parts &&
-      data.candidates[0].content.parts[0].text
-    ) {
-      botReply = data.candidates[0].content.parts[0].text;
-    }
-
-    res.json({ reply: botReply });
+    res.json({ reply: response });
 
   } catch (error) {
-    console.error("Erro no /chat:", error);
-    res.status(500).json({ reply: "Erro ao conectar com a API do Gemini." });
+   
+    res.status(500).json({ reply: 'Sorry, there was an internal server error.' });
   }
 });
 
-app.listen(3000, () => {
-  console.log("Servidor rodando na porta 3000");
+// Inicia o servidor
+app.listen(PORT, () => {
+  console.log(`Server running on http://localhost:${PORT}`);
 });
