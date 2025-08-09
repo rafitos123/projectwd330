@@ -231,7 +231,7 @@ sendBtn.onclick = async () => {
   addMessage("Typing...", "bot");
 
   try {
-    const response = await fetch("http://localhost:3000/chat", {
+    const response = await fetch("https://projectwd330.onrender.com/chat", {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
