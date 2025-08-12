@@ -10,34 +10,26 @@
     <header>
         <nav>
             <ul>
-                <li><a href="#">Home</a></li>
-                <li><a href="game.html">Who is this Pokemon?</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
                 <li><a href="#contact">Contact</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <div class="card" id="pokedex">
-            <img id="pokemon-img" alt="Pokemon">
-            <div class="pokemon-info">
-                <h3>
-                    <span id="pokemon-id"></span>
-                    <span id="name"></span>
-                </h3>
-                <p><strong><span id="type"></span></strong></p>
-                 <input type="button" value="View more">
-            </div>
-        </div>
-        <div class="search">
-            <form action="">
-                <input type="text" id="searchPokemon" name="search" placeholder="🔍 Enter Pokémon name or ID " ><br>
-                <button id="back">◀◀</button>
-                <button id="next">▶▶</button>
-            </form>
-        </div>
-        <div id="pokemon-container" class="grid"></div>
+     
+     <div id="game">
+        <h1>Who is this Pokemon?</h1>
+        <p>Do you really know all the Pokémon? Let's see!</p><br>
+        <img id="pokemon-img" class="silhouette" alt="Pokémon misterioso">
+        <div id="options"></div>
+        <button id="play-again" class="hidden">Jogar novamente</button>
+    </div>
+    <div id="loading-spinner">
+        <div class="spinner"></div>
+    </div>
 
-        <button id="load-more">See more</button>
+
 
         <img src="images/professor.webp" alt="Abrir Chat" id="chatButton" class="botao-imagem">
         
@@ -60,5 +52,6 @@
         <p>&copy; 2025 Pokédex App</p>
     </footer>
     <script defer src="scripts/script.js"></script>
+    <script defer src="scripts/game.js"></script>
 </body>
 </html>
