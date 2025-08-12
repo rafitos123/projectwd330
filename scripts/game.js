@@ -65,15 +65,18 @@ async function startGame() {
 
     shuffled.forEach(name => {
       const btn = document.createElement('button');
-      btn.textContent = `It's ${name.charAt(0).toUpperCase() + name.slice(1)}!`;
+      const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
+      btn.textContent = `It's ${formattedName}!`;
       btn.className = 'option-btn';
+      btn.setAttribute('data-name', name); // usado para comparação
+
       btn.onclick = () => {
         if (name === correctName) {
           btn.classList.add('correct');
         } else {
           btn.classList.add('incorrect');
-          const correctBtn = [...optionsDiv.children].find(b => b.textContent === correctName);
-          correctBtn.classList.add('correct');
+          const correctBtn = [...optionsDiv.children].find(b => b.getAttribute('data-name') === correctName);
+          if (correctBtn) correctBtn.classList.add('correct');
         }
 
         setTimeout(() => {
@@ -83,8 +86,10 @@ async function startGame() {
 
         playAgainBtn.classList.remove('hidden');
       };
+
       optionsDiv.appendChild(btn);
     });
+
 
 
     hideLoading();
