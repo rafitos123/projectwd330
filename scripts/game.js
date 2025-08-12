@@ -71,16 +71,15 @@ async function startGame() {
       btn.setAttribute('data-name', name); // usado para comparação
 
       btn.onclick = () => {
-   if (name.toLowerCase() === correctName.toLowerCase()) {
-  btn.classList.add('correct');
-} else {
-  btn.classList.add('incorrect');
-  const correctBtn = [...optionsDiv.children].find(b =>
-    b.getAttribute('data-name')?.toLowerCase() === correctName.toLowerCase()
-  );
-  if (correctBtn) correctBtn.classList.add('correct');
-}
-
+      if (name.toUpperCase() === correctName.toUpperCase()) {
+          btn.classList.add('correct');
+        } else {
+          btn.classList.add('incorrect');
+          const correctBtn = [...optionsDiv.children].find(b =>
+            b.getAttribute('data-name')?.toUpperCase() === correctName.toUpperCase()
+          );
+          if (correctBtn) correctBtn.classList.add('correct');
+        }
 
 
         setTimeout(() => {
