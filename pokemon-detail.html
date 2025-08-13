@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A fun game to guess the Pokémon based on its silhouette.">
+    <meta name="description" content="Detailed information about Pokémon including stats, abilities, and evolution chain.">
     <meta name="author" content="Rafael Antunes">
     <link rel="stylesheet" href="styles/style.css">
     <link rel="icon" type="image/png" href="images/favicon.png">
-    <title>Who is this Pokemon?</title>
+    <title>Pokémon Details</title>
 </head>
 <body>
     <header>
@@ -22,25 +22,15 @@
 
             <ul class="menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="#">Who is this Pokémon?</a></li>
+                <li><a href="game.html">Who is this Pokémon?</a></li>
                 <li><a href="bag.html">Bag</a></li>
             </ul>
         </nav>
     </header>
     <main>
-     
-     <div id="game">
-        <h1>Who is this Pokemon?</h1>
-        <p>Do you really know all the Pokémon? Let's see!</p><br>
-        <img id="pokemon-img" class="silhouette" alt="Pokémon misterioso">
-        <div id="options"></div>
-        <button id="play-again" class="hidden">Jogar novamente</button>
-    </div>
-    <div id="loading-spinner">
-        <div class="spinner"></div>
-    </div>
-
-
+      <div id="pokemon-detail" class="card"></div>
+        
+    <div id="evolution" class="evolution-chain"></div>
 
         <img src="images/professor.webp" alt="Abrir Chat" id="chatButton" class="botao-imagem">
         
@@ -62,7 +52,7 @@
     <footer>
         <p>&copy; 2025 Pokédex App</p>
     </footer>
-    <script defer src="scripts/game.js"></script>
+    <script defer src="scripts/script.js"></script>
     <script defer src="scripts/chat.js"></script>
 </body>
 </html>

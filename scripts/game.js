@@ -47,7 +47,7 @@ async function startGame() {
       return;
     }
 
-    // Espera a imagem carregar antes de continuar
+    //wait for the image to load before displaying
     await new Promise(resolve => {
       img.onload = resolve;
       img.src = artwork;
@@ -68,7 +68,7 @@ async function startGame() {
       const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
       btn.textContent = `It's ${formattedName}!`;
       btn.className = 'option-btn';
-      btn.setAttribute('data-name', name); // usado para comparação
+      btn.setAttribute('data-name', name); //comparing names in uppercase
 
       btn.onclick = () => {
       if (name.toUpperCase() === correctName.toUpperCase()) {
@@ -106,3 +106,16 @@ async function startGame() {
 playAgainBtn.onclick = startGame;
 
 startGame();
+
+ function toggleMenu() {
+    const menu = document.querySelector('.menu');
+    const card = document.querySelector('.card');
+
+    menu.classList.toggle('show');
+
+    if (menu.classList.contains('show')) {
+      card.style.marginTop = '250px'; 
+    } else {
+      card.style.marginTop = '20px';
+    }
+  }

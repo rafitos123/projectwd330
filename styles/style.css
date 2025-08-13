@@ -12,6 +12,11 @@ main {
   padding: 15px;
 }
 
+h1{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
 :root {
   --primary-color: #A1B5D8;
   --secondary-color: #394d60;
@@ -33,18 +38,25 @@ nav {
   background-color: var(--card-color);
   box-shadow: 0 2px 5px rgba(0,0,0,0.15);
   letter-spacing: 1px;
-  padding: 10px 15px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
 }
 
-nav ul {
+.logo img {
+  height: 50px;
+}
+
+.menu {
   display: flex;
   gap: 10px;
   list-style-type: none;
   font-size: larger;
 }
 
-
-nav li a {
+.menu li a {
   display: block;
   color: black;
   text-align: center;
@@ -54,7 +66,7 @@ nav li a {
   transition: color 0.3s ease;
 }
 
-nav li a::after {
+.menu li a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -67,10 +79,40 @@ nav li a::after {
   transition: transform 0.3s ease;
 }
 
-nav li a:hover::after {
+.menu li a:hover::after {
   transform: scaleX(1);
 }
 
+.hamburger {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* 📱 Mobile */
+@media (max-width: 768px) {
+  .menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: var(--card-color);
+    display: none;
+    flex-direction: column;
+    padding: 10px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+    z-index: 999;
+  }
+
+  .menu.show {
+    display: flex;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
 .card {
   background: url('../images/background-hero.webp') no-repeat center center;
   background-size: cover;
@@ -84,6 +126,7 @@ nav li a:hover::after {
   font-family: 'Iceland', sans-serif;
   position: relative;
 }
+
 
 .card img {
   top: 20px;
@@ -396,3 +439,24 @@ footer {
 }
 
 
+.evolution-chain {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      margin-top: 20px;
+      justify-content: center;
+    }
+    .evolution-stage {
+      text-align: center;
+      font-size: 30px;
+      @media (max-width: 600px) {
+        font-size: 15px;
+      }
+    }
+    .evolution-stage img {
+      width: 150px;
+      object-fit: contain;
+      @media (max-width: 600px) {
+        width: 80px;
+      }
+    }
