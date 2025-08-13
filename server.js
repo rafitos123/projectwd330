@@ -10,7 +10,7 @@ const dotenv = require('dotenv');
 const app = express();
 const PORT = 3000;
 
-// 🔐 Sua chave da API Gemini
+//Gemini API Key
 dotenv.config();
 const API_KEY = process.env.GEMINI_API_KEY;
 
@@ -21,7 +21,7 @@ const genAI = new GoogleGenerativeAI(API_KEY);
 app.use(cors());
 app.use(bodyParser.json());
 
-// Rota principal do chatbot
+//chat bot route
 app.post('/chat', async (req, res) => {
   const userMessage = req.body.message;
   
@@ -40,7 +40,7 @@ app.post('/chat', async (req, res) => {
   }
 });
 
-// Inicia o servidor
+//initialize server
 app.listen(PORT, () => {
   console.log(`Server running on http://localhost:${PORT}`);
 });

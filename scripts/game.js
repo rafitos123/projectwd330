@@ -14,11 +14,11 @@ function hideLoading() {
 async function getPokemon(id) {
   try {
     const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-    if (!res.ok) throw new Error('Erro ao buscar Pokémon');
+    if (!res.ok) throw new Error('Error fetching Pokémon data');
     return await res.json();
   } catch (error) {
     console.error(error);
-    alert('Erro ao carregar Pokémon. Tente novamente.');
+    alert('Error fetching Pokémon data. Please try again later.');
     hideLoading();
     throw error;
   }
@@ -42,7 +42,7 @@ async function startGame() {
     const artwork = correctPokemon.sprites.other['official-artwork'].front_default;
 
     if (!artwork) {
-      alert('Imagem do Pokémon não disponível.');
+      alert('Pokémon image not available. Please try again.');
       hideLoading();
       return;
     }

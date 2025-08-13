@@ -152,7 +152,7 @@ const createCard = (pokemonData) => {
   return card;
 };
 
-// load pokemon in grid
+//load pokemon in grid
 const loadPokemonBatch = async () => {
   for (let i = offset; i < offset + limit; i++) {
     const data = await fetchPokemon(i);
@@ -161,19 +161,19 @@ const loadPokemonBatch = async () => {
       pokemonContainer.appendChild(card);
     }
   }
-  offset += limit; // change offset for next batch
+  offset += limit; //change offset for next batch
 };
 
 if (loadMoreButton && pokemonContainer) {
   loadMoreButton.addEventListener('click', loadPokemonBatch);
-  loadPokemonBatch(); // Load initial batch of Pokémon
+  loadPokemonBatch(); //Load initial batch of Pokémon
 }
 
 if (pokemonId && pokemonName && pokemonType && pokemonImg && card) {
   renderPokemon(currentPokemonId);
 }
 
-// Pokemon detail (pokemon-detail.html)
+// Pokemon detail page
 if (window.location.pathname.includes('pokemon-detail.html')) {
   const urlParams = new URLSearchParams(window.location.search);
   const pokemonIdParam = urlParams.get('id');
